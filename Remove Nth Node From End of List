@@ -1,0 +1,45 @@
+#Remove Nth Node From End of List(Leetcode-19)
+
+#Brute Force solution
+
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+         length=0
+         temp=head
+         while temp is not None:
+             length+=1
+             temp=temp.next
+         if length==n:
+             new_head=head.next
+             del head
+             return new_head
+          position_to_stop=length-n
+          temp=head
+          count+=1
+          while count<postion_to_stop:
+               temp=temp.next
+               count+=1
+          temp.next+=temp.next.next
+          return head
+
+#Time Complexity=O(2N)
+#Space Complexity=O(1)
+
+#Optimal Solution
+
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        slow=head
+        fast=head
+        for _ in range(n):
+            fast=fast.next
+        if fast is None:
+            return head.next
+        while fast.next is not None:
+            slow=slow.next
+            fast=fast.next
+        slow.next=slow.next.next
+        return head
+
+#Time Complexity=O(N)
+#Space Complexity=O(1)
