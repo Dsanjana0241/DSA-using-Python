@@ -1,0 +1,40 @@
+#Reverse a Doubly Linked List(gfg practice)
+
+#Brute Force solution
+class Solution:
+    def reverse(self, head):
+       if head.next is None:
+           return head
+       temp=head
+       stack=[]
+       while temp is not None:
+           stack.append(temp.val)
+           temp=temp.next
+      temp=head
+      while temp is not None:
+          e=stack.pop()
+          temp.val=e
+          temp=temp.next
+      return head
+
+#Time Complexity=O(2N)
+#Space Complexity=O(N)
+
+#Optimal Solution
+
+class Solution:
+    def reverse(self, head):
+      if head.next is None:
+           return head
+      curr=head
+      prev=None
+      while curr is not None:
+         front=curr.next
+         curr.next=prev
+         curr.prev=front
+         prev=curr
+         curr=front
+     return prev
+
+#Time Complexity=O(N)
+#Space Complexity=O(1)
