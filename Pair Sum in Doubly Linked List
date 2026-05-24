@@ -1,0 +1,61 @@
+#Pair Sum in Doubly Linked List(GFG)
+
+#Brute Force Solution
+class Solution:
+    def findPairsWithGivenSum(self, target : int, head : Optional['Node']) -> List[List[int]]:
+           temp1=head
+           result=[]
+           while temp1 is not None:
+                 temp2=temp1.next
+                 while temp2 is not None:
+                       if temp1.data+temp2.data==target:
+                             result.append([temp1.data,temp2.data])
+                       temp2=temp2.next
+                  temp1=temp1.next
+          return result
+
+#Time Complexity=O(N(N+1)/2)
+#Space Complexity=O(1)
+
+#Better Solution
+class Solution:
+    def findPairsWithGivenSum(self, target : int, head : Optional['Node']) -> List[List[int]]:
+           my_set=set()
+           result=[]
+           temp=head
+           while temp is not None:
+               remaining=target-temp.data
+               if remaining in my_set:
+                   result.append([remaining,temp.data])
+               my_set.add(temp.data)
+               temp=temp.next
+           return result
+
+#Time Complexity=O(N)
+#Space Complexity=O(N)
+
+#Optimal Solution
+
+class Solution:
+    def findPairsWithGivenSum(self, target : int, head : Optional['Node']) -> List[List[int]]:
+          result=[]
+          left=head
+          right=head
+          while right.next is not None:
+               right=right.next
+          while left is not None and right is not None and left.data<right.data:
+                   total=left.data+right.data
+                   if total==target:
+                        result.append([left.data,right.data])
+                        left=left.next
+                        right=right.prev
+                   elif total>target:
+                         right=right.prev
+                   else:
+                       left=left.next
+          return res
+
+#Time Complexity=O(2N)
+#Space Complexity=O(1)
+
+            
