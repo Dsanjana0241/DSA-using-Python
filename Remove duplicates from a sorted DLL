@@ -1,0 +1,18 @@
+#Remove duplicates from a sorted DLL(GFG)
+
+class Solution:
+    def removeDuplicates(self, head):
+         curr=head
+         while curr is not None:
+              if curr.prev and curr.prev.data ==curr.data:
+                    if curr.prev=head:
+                         curr.prev=None
+                         head=curr
+                    else:
+                       curr.prev.prev.next=curr
+                       curr.prev=curr.prev.prev
+               curr=curr.next
+          return head
+
+#Time Complexity=O(N)
+#Space Complexity=O(1)
