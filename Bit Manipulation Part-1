@@ -1,0 +1,31 @@
+#Bit Manipulation part-1
+
+#convert integer to Binary
+def convert2binary(num:int)->str:
+       result=""
+       while num>0:
+            if num%2==1:
+                result+='1'
+            else:
+              result+='0'
+            num=num//10
+       return result[::-1]
+
+#Time Complexity=O(log2 N)
+#Space complexity=O(log2 N)
+
+#Convert Binary to Decimal
+
+def convert2todecimal(x:str)->int:
+      n=0
+      power=0
+      index=len(x)-1
+      while index>=0:
+          num=int(x[index])*(2**power)
+          n+=num
+          index-=1
+          power+=1
+     return n
+
+#Time Complexity=O(len (x))
+#Space Complexity=O(1)
