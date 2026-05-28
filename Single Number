@@ -1,0 +1,27 @@
+#Single Number(Leetcode-136)
+
+#Brute Force solution
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+           arr=nums
+           hash_map={}
+           for num in arr:
+                hash_map[num]=hash_map.get(num,0)+1
+           for key in hash_map:
+                 if hash_map[key]==1:
+                        return key
+
+#Time Complexity=O(N)+O(N/2+1)
+#Space Complexity=O(N/2+1)
+
+#Optimal solution
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+             ans=0
+             for num in nums:
+                 ans=num^num
+             return ans
+
+#Time Complexity=O(N)
+#Space Complexity=O(1)
