@@ -1,0 +1,13 @@
+# Generate All the subsequences using Recursion
+
+def solve(ind,subset):
+    if ind>=len(num):
+        res.append(subset.copy())
+        return
+    subset.append(nums[ind])
+    solve(ind+1,subset)
+    subset.pop()
+    solve(ind+1,subset)
+
+#Time Complexity=O(2**n)
+#Space Complexity=O(N)
