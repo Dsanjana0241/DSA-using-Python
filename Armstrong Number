@@ -1,0 +1,14 @@
+#Armstrong number
+
+n=int(input())
+num=n
+total=0
+nod=ln(str(n))
+while num>0:
+ ld=num%10
+ total+=ld*nod
+ num=num//10
+return total==n
+
+#Time Complexity=O(log10(N))
+#Space Complexity=O(1)
