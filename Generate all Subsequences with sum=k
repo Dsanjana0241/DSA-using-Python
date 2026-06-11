@@ -1,0 +1,36 @@
+#Generate all Subsequences with sum=k
+
+#Brute Force Solution
+
+def solve(ind,subset):
+     if ind>=len(nums):
+          if sum(subset)==target:
+               result.append(subset.copy())
+               return
+    subset.append(nums[ind])
+    func(ind+1,subset)
+    subset.pop()
+    func(ind+1,subset)
+
+#Time Complexity=O(2**n)
+#Space Complexity=O(N)
+
+#Optimal Solution
+
+def solve(ind,total,subset):
+    if total==target:
+         result.append(subset.copy())
+         return
+    elif total>target:
+           return
+    if index>=len(num):
+            return
+    subset.append(nums[index])
+    sum=total+nums[index]
+    solve(ind+1,sum,subset)
+    e=subset.pop()
+    sum=sum-e
+    solve(ind+1,sum,subset)
+
+#Time Complexity=O(2**n)
+#Space complexity=O(N)
