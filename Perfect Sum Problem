@@ -1,0 +1,30 @@
+#Perfect Sum Problem
+
+Given an array arr of non-negative integers and an integer target, the task is to count all subsets of the array whose sum is equal to the given target.
+
+Examples:
+Input: arr[] = [5, 2, 3, 10, 6, 8], target = 10
+Output: 3
+Explanation: The subsets {5, 2, 3}, {2, 8}, and {10} sum up to the target 10.
+
+#Solution
+class Solution:
+    def perfectSum(self, arr, target):
+       dp={}
+       def backtrack(index,total):
+            if index==len(arr):
+                  if total==target:
+                         return 1
+                  return 0
+            if (index,total) in dp:
+                 return dp[(index,total)]
+            sum=total+arr[index]
+            pick=backtrack(index+1,sum)
+            sum=total
+            not_pick=backtrack(index+1,sum)
+            dp[(index,total)]=pick+not_pick
+            return dp[(index,total)]
+        return backtrack(0,0)
+
+#Time Complexity=O(2**N)
+#Space Complexity=O(N)
