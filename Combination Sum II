@@ -1,0 +1,68 @@
+#Combination Sum II(Leetcode-40)
+
+Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.
+Each number in candidates may only be used once in the combination.
+Note: The solution set must not contain duplicate combinations.
+
+Example 1:
+Input: candidates = [10,1,2,7,6,1,5], target = 8
+Output: 
+[
+[1,1,6],
+[1,2,5],
+[1,7],
+[2,6]
+]
+
+#Brute force solution
+class Solution:
+    def solve(self,ind,total,subset,nums,target,res):
+        if total==target:
+            res.add(tuple(subset.copy()))
+            return
+        if total>target:
+            return
+        elif ind>=len(nums):
+            return
+        subset.append(nums[ind])
+        sum=total+nums[ind]
+        self.solve(ind+1,sum,subset,nums,target,res)
+        subset.pop()
+        sum=total
+        self.solve(ind+1,sum,subset,nums,target,res)
+
+
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        candidates.sort()
+        res=set()
+        self.solve(0,0,[],candidates,target,res)
+        return list(res)
+
+#Time Complexity=O((2**N)*K)
+#Space complexity=O(T*K)
+
+#Optimal solution
+
+class Solution:
+    def solve(self,ind,total,subset,res,nums):
+         if total==0:
+             res.append(subset.copy())
+             return
+         if total<0:
+                return
+         for i in range(ind,len(nums)):
+               if i> ind and  nums[i]==nums[i-1]:
+                         continue
+               subset.append(nums[i])
+               sum=total-nums[i]
+               self.solve(i+1,sum,subset,res,nums)
+               subset.pop()
+     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        candidates.sort()
+        res=[]
+        self.solve(0,target,[],res,candidates)
+        return list(res)
+
+#Time complexity=O((2**N)*N)
+#Space complexity=O(N)
+    
