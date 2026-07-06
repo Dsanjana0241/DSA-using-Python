@@ -1,0 +1,19 @@
+#Postfix to Infix Conversion
+
+class Solution:
+    def postToInfix(self, postfix):
+        # Code here
+        stack=[]
+        for char in postfix:
+            if char.isalnum():
+                stack.append(char)
+            else:
+                o1=stack.pop()
+                o2=stack.pop()
+                new_exp=f"({o2}{char}{o1})"
+                stack.append(new_exp)
+                
+        return stack[-1]
+
+#Time complexity=O(N)
+#Space complexity=O(N)
