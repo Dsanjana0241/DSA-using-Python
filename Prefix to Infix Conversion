@@ -1,0 +1,19 @@
+#Prefix to Infix Conversion
+
+class Solution:
+    def preToInfix(self, pre_exp):
+        # Code here
+        stack=[]
+        for ch in pre_exp[::-1]:
+            if ch.isalnum():
+                stack.append(ch)
+            else:
+                o1=stack.pop()
+                o2=stack.pop()
+                new_exp=f"({o1}{ch}{o2})"
+                stack.append(new_exp)
+        return stack[-1]
+
+#Time complexity=O(N)+O(N)
+#Space complexity=O(N)
+        
