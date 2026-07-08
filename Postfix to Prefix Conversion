@@ -1,0 +1,18 @@
+#Postfix to Prefix Conversion
+
+class Solution:
+    def postToPre(self, s):
+        # Code here
+        stack=[]
+        for ch in s:
+            if ch.isalnum():
+                stack.append(ch)
+            else:
+                o1=stack.pop()
+                o2=stack.pop()
+                new_exp=f"{ch}{o2}{o1}"
+                stack.append(new_exp)
+        return stack[-1]
+
+#Time complexity=O(N)
+#Space complexity=O(N)
