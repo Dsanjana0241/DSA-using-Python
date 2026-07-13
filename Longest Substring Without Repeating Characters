@@ -1,0 +1,38 @@
+#Longest Substring Without Repeating Characters(Leetcode-3)
+
+#Brute force solution
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+          maxi=0
+          n=len(s)
+          for i in range(0,n):
+               my_set=set()
+               for j in range(i,n):
+                    if s[j] in my_set:
+                           break
+                    max=max(maxi,j-i+1)
+                    my_set.add(s[j])
+          return maxi
+
+#Time complexity=O(N*(N+1)/2)~=O(N**2)
+#Space complexity=O(N)
+
+#Optimal solution
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+           n=len(s)
+           r=0
+           l=0,maxi=0
+           my_dict=dict()
+           while r<n:
+               if s[r] in my_dict:
+                   l=max(l,my_dict[s[r]]+1)
+               maxi=max(maxi,r-l+1)
+               my_dict[s[r]]=r
+               r+=1
+          return maxi
+
+#Time complexity=O(N)
+#Space complexity=O(N)
+                        
