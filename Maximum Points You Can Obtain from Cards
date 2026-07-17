@@ -12,7 +12,7 @@ class Solution:
             ls+=nums[i]
         ri=n-1
         maxi=ls
-        for i in range(k-2,-1,-1):
+        for i in range(k-1,-1,-1):
              ls-=nums[i]
              rs+=nums[ri]
              maxi=max(maxi,rs+ls)
