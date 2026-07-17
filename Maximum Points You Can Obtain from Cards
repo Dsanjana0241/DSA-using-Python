@@ -1,0 +1,24 @@
+#Maximum Points You Can Obtain from Cards(Leetcode-1423)
+
+#Optimal solution
+
+class Solution:
+    def maxScore(self, nums: List[int], k: int) -> int:
+        n=len(nums)
+        if n==k:
+            return sum(nums)
+        ls,rs=0
+        for i in range(0,k):
+            ls+=nums[i]
+        ri=n-1
+        maxi=ls
+        for i in range(k-2,-1,-1):
+             ls-=nums[i]
+             rs+=nums[ri]
+             maxi=max(maxi,rs+ls)
+             ri-=1
+       return maxi
+
+#Time Complexity=O(2N)
+#Space complexity=O(1)
+             
