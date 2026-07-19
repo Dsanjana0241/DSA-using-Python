@@ -1,0 +1,17 @@
+#Divisible and Non-divisible Sums Difference(Leetcode-2894)
+
+class Solution:
+    def differenceOfSums(self, n: int, m: int) -> int:
+        num1=[]
+        num2=[]
+        for i in range(n+1):
+            if i%m!=0:
+                num1.append(i)
+            else:
+                num2.append(i)
+        return sum(num1)-sum(num2)
+
+#Time complexity=O(N)
+#Space complexity=O(N)
+
+
