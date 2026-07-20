@@ -1,0 +1,17 @@
+#Minimum Coins of 1, 2, 5 and 10(GFG)
+class Solution:
+    def findMin(self, n):
+        coins=[1,2,5,10]
+        res=[]
+        for i in range(len(coins)-1,-1,-1):
+              if n==0:
+                  break
+              if n>=coins[i]:
+                   c=n//coins[i]
+                   for _ in range(c):
+                       res.append(coins[i])
+                   n%=coins[i]
+        return len(res)
+
+#Time Complexity=O(N)
+#Space Complexity=O(1)
