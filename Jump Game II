@@ -1,0 +1,19 @@
+#Jump Game II(Leetcode-45)
+
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+         jumps=0
+         l=0
+         r=0
+         n=len(nums)
+         while r<n-1:
+             f=0
+             for i in range(1,r+1):
+                 f=max(f,i+nums[i])
+             l=r+1
+             r=f
+             jumps+=1
+        return jumps
+
+#Time Complexity=O(N)
+#Space Complexity=O(1)
