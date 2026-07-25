@@ -1,0 +1,24 @@
+#Minimum Platforms
+
+#Optimal solution
+
+class Solution:    
+    def minPlatform(self, arr, dep):
+          arr.sort()
+          dep.sort()
+          ans=1
+          c=1
+          i=1
+          j=0
+          while i<len(arr) and j<len(dep):
+                  if arr[i]<=dep[j]:
+                        c+=1
+                        i+=1
+                 else:
+                     c-=1
+                     j+=1
+                ans=max(c,ans)
+        return ans
+
+#Time Complexity=O(N log N+N)
+#Space Complexity=O(1)
