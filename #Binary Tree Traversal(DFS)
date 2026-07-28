@@ -1,0 +1,33 @@
+#PreOrder
+
+def preorder(node):
+      if node==None:
+         return 
+      print(node.val)
+      preorder(node.left)
+      preorder(node.right)
+
+#Inorder
+
+def inorder(node):
+    if node==None:
+         return 
+    inorder(node.left)
+    inorder(node.val)
+    inorder(node.right)
+
+#PostOrder
+
+def postorder(node):
+      if node==None:
+             return 
+      postorder(node.left)
+      postorder(node.right)
+      postorder(node.val)
+
+#Time Complexity=O(N)
+#Space Complexity=O(H)
+
+where N is the number of Nodes
+and H is the stack space
+    
