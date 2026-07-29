@@ -1,0 +1,18 @@
+#BFS Traversal
+
+def bfstraverse(node):
+     res=[]
+     queue=dequeue([])
+     queue.append(node)
+     while len(queue)!=0:
+          e=queue.popleft()
+          res.append(e.data)
+          if e.left is not None:
+              res.append(e.left)
+          if e.right is not None:
+               res.append(e.right)
+      return res
+
+#Time Complexity=O(N)
+#Space Complexity=O(N)+O(N)
+               
