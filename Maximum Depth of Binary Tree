@@ -1,0 +1,48 @@
+# Maximum Depth of Binary Tree
+
+#Recursive solution(Best solution)
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+           if root is None:
+                return 0
+           lh=maxDepth(root.left)
+           rh=maxDepth(root.right)
+           h=max(lh,rh)+1
+           return h
+
+#Time Complexity=O(N)-number of Nodes
+#Space Complexity=O(H)-stack space
+
+#Iterative solution
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+          queue=dequeue([])
+          h=0
+          queue.append(root)
+          while len(queue)!=0:
+                 s=len(queue)
+                 h+=1
+                 for _ in range(s):
+                     e=queue.popleft()
+                     if e.left is not  None:
+                          queue.append(e.left)
+                     if e.right is not None:
+                           queue.append(e.right)
+          return h
+
+#Time Complexity=O(N)
+#Space Complexity=O(N)
