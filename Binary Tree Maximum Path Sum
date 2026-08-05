@@ -1,0 +1,21 @@
+# Binary Tree Maximum Path Sum(Leetcode-124)
+
+class Solution:
+     maxi=float('-inf')
+     def solve(self,root):
+            if root is None:
+                 return 0
+            ls=self.solve(root.left)
+            if ls<0:
+                   ls=0
+            rs=self.solve(root.right)
+            if rs<0:
+                   rs=0
+            self.maxi=max(self.maxi,root.val+ls+rs)
+            return root.val+max(ls,rs)
+     def maxPathSum(self, root: Optional[TreeNode]) -> int:
+               self.solve(root)
+               return self.maxi
+
+#Time Complexity=O(N)
+#Space Complexity=O(H)
