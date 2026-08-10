@@ -1,0 +1,43 @@
+#Binary Tree Right Side View(Leetcode-199)
+
+#Brute Force Solution
+
+class Solution:
+    
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+           queue=deque()
+           res=[]
+           queue.append(root)
+           while len(queue)!=0:
+                 level_size=len(queue)
+                 for i in range(level_size):
+                      node=queue.popleft()
+                      if i==level_size-1:
+                           res.append(node.val)
+                      if node.left:
+                            queue.append(node.left)
+                      if node.right:
+                             queue.append(node.right)
+
+#Time Complexity=O(N)
+#Space Complexity=O(N)+O(N)
+
+#Optimal solution
+
+class Solution:
+     def order(self,root,level,ans):
+          if root is None:
+               return
+          if len(ans)==level:
+                  ans.append(root.val)
+          if root.right:
+               self.order(root.right,level+1,ans)
+          if root.left:
+                self.order(root.left,level+1,ans)
+     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+               ans=[]
+               self.order(root,0,ans)
+               return ans
+
+#Time Complexity=O(N)
+#Space Complexity=O(H)
