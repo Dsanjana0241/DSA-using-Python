@@ -1,6 +1,7 @@
 #3Sum(Leetcode-15)
 
 #Brute Force Solution
+
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
         n=len(nums)
