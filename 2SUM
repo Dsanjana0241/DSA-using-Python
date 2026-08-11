@@ -1,4 +1,4 @@
-#TWO SUM PROBLEM
+#Two Sum Problem
 
 nums=list(map(int,input().split()))
 target=int(input())
